@@ -13,7 +13,8 @@
     "core-js": "^3.4.4",
     "normalize.css": "^8.0.1",
     "simplebar-vue": "^1.4.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-star-rating": "^1.7.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
