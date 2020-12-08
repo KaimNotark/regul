@@ -591,8 +591,9 @@ body {
 .modal-backing {
   width: 560px;
   height: 655px;
-  padding-top: 20px;
+  // padding-top: 20px;
   background-color: $color-white;
+  border-radius: 16px;
 }
 .modal-form__simplebar {
   width: 590px;

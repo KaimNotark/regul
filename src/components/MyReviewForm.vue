@@ -46,7 +46,10 @@
       <div class="form-main__photo-container">
         <LoadPhoto />
         <div class="form-main__photos">
-          <Photo />
+         <img src="../images/01_boat.png" alt="boat" class="form-main__img">
+         <img src="../images/02_pair.png" alt="pair" class="form-main__img">
+         <img src="../images/03_girl.png" alt="girl" class="form-main__img">
+         <img src="../images/04_wedding.png" alt="wedding" class="form-main__img">
         </div>
       </div>
 
@@ -61,7 +64,6 @@
 <script>
 import RatingInForm from "./RatingInForm.vue";
 import LoadPhoto from "./LoadPhoto.vue";
-import Photo from "./Photo.vue";
 
 export default {
   name: "MyReviewForm",
@@ -69,7 +71,6 @@ export default {
   components: {
     RatingInForm,
     LoadPhoto,
-    Photo,
   },
 
   props: {
@@ -101,6 +102,8 @@ export default {
         title: "Пунктуальность",
       },
     ],
+
+   
   }),
 
   methods: {
@@ -111,8 +114,10 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 @import "../stylesheets/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 %title {
   font-family: Montserrat;
@@ -177,7 +182,8 @@ input:-webkit-autofill:active {
   width: 560px;
   height: 655px;
   background-color: $color-white;
-  padding: 23px;
+  padding: 0px 23px 0px 23px;
+  border-radius: 16px;
 
   &-devider {
     margin-top: 17px;
@@ -191,9 +197,9 @@ input:-webkit-autofill:active {
 
   &-header {
     width: 100%;
-    height: 56px;
+    height: 20px;
     left: 0px;
-    top: 0px;
+    margin-top: 16px;
     background: #ffffff;
     border-radius: 16px 16px 0px 0px;
 
@@ -205,12 +211,15 @@ input:-webkit-autofill:active {
   }
   &-main {
     &__person {
+      display: flex;
+      margin-top: 24px;
     }
     &__avatar {
       width: 102px;
       height: 68px;
     }
     &__topic {
+      margin-left: 20px;
     }
     &__title {
       @extend %title;
@@ -226,6 +235,10 @@ input:-webkit-autofill:active {
       font-size: 12px;
       line-height: 16px;
       color: $color-text-light;
+    }
+
+    &__rating-container {
+      display: flex;
     }
 
     &__comment-textarea {

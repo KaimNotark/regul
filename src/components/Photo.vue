@@ -1,12 +1,19 @@
 <template>
   <div class="photo__container">
-    <img src="../images/01_boat.png" alt="boat" class="photo__image" />
+    <img :src="photo.imgUrl" :alt="photo.alt" class="photo__image" />
   </div>
 </template>
 
 <script>
 export default {
   name: "Photo",
+
+  props: {
+    photo: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
