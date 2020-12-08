@@ -17,12 +17,12 @@
               ×
             </button>
             <div class="modal-backing">
-              <simplebar
+              <!-- <simplebar
                 data-simplebar-auto-hide="false"
                 class="modal-form__simplebar"
-              >
-                <MyReviewForm />
-              </simplebar>
+              > -->
+              <MyReviewForm :user="dataCard" />
+              <!-- </simplebar> -->
             </div>
           </div>
         </div>
@@ -589,14 +589,14 @@ body {
   color: $color-input-focus;
 }
 .modal-backing {
-  width: 658px;
-  height: calc(100vh - 110px);
+  width: 560px;
+  height: 655px;
   padding-top: 20px;
   background-color: $color-white;
 }
 .modal-form__simplebar {
-  width: 658px;
-  height: calc(100vh - 150px);
+  width: 590px;
+  height: 655px;
 }
 // end -- modal overlay form
 </style>
