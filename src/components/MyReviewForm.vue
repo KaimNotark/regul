@@ -32,7 +32,7 @@
           name="comment"
           id="comment-id"
           cols="30"
-          rows="10"
+          rows="1"
           class="form-main__comment-textarea"
           autocomplete="off"
           maxlength="500"
@@ -41,6 +41,13 @@
           @input="changeComment"
         ></textarea>
         <p class="form-main__characters-value">{{ numberOfCharacters }}/500</p>
+      </div>
+
+      <div class="form-main__photo-container">
+        <LoadPhoto />
+        <div class="form-main__photos">
+          <Photo />
+        </div>
       </div>
 
       <hr class="form-devider" />
@@ -53,12 +60,16 @@
 </template>
 <script>
 import RatingInForm from "./RatingInForm.vue";
+import LoadPhoto from "./LoadPhoto.vue";
+import Photo from "./Photo.vue";
 
 export default {
   name: "MyReviewForm",
 
   components: {
     RatingInForm,
+    LoadPhoto,
+    Photo,
   },
 
   props: {
