@@ -14,7 +14,7 @@ yarn add vue-star-rating
       inactive-color="#EAECF0"
       :active-color="colorStar"
       border-color="#EAECF0"
-      rounded-corners="true"
+      :rounded-corners="true"
       :border-width="0"
       :padding="10"
       :rating="ratingValue"

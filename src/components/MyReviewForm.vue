@@ -272,6 +272,19 @@ input:-webkit-autofill:active {
       color: $color-text-placeholder;
       margin: 0;
     }
+
+    &__photo-container {
+    }
+
+    &__photos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &__img {
+      margin-left: 8px;
+    }
   }
   &-footer {
     width: 560px;
