@@ -1,10 +1,42 @@
 <template>
   <div id="app">
     <div id="wrapper" class="wrapper">
+      <!-- modal window form -->
+      <transition name="fade-overlay-form">
+        <div
+          id="modal-overlay-form"
+          class="modal-overlay-form"
+          v-if="modalIsOpened"
+        >
+          <div modal-overlay-close="modal-overlay" class="modal__overlay">
+            <button
+              class="modal-button-close"
+              type="button"
+              @click="modalClose"
+            >
+              ×
+            </button>
+            <div class="modal-backing">
+              <simplebar
+                data-simplebar-auto-hide="false"
+                class="modal-form__simplebar"
+              >
+                <MyReviewForm />
+              </simplebar>
+            </div>
+          </div>
+        </div>
+      </transition>
+      <!-- / modal window form -->
+
       <header class="header">
         <div class="header-container">
           <img src="/images/infinity-scroll.png" alt class="header-img" />
-          <a href="https://kaimnotark.github.io/LP_DEAB/" class="header-link" target="_blank">
+          <a
+            href="https://kaimnotark.github.io/LP_DEAB/"
+            class="header-link"
+            target="_blank"
+          >
             <span class="__capital">landing page</span>
             (open it on desktop)
           </a>
@@ -15,11 +47,16 @@
         <div class="main-window">
           <h2 class="main-window__title">window for test</h2>
           <hr class="main-window__devider" />
-          <simplebar data-simplebar-auto-hide="false" class="main-window__scroll-simplebar">
+          <simplebar
+            data-simplebar-auto-hide="false"
+            class="main-window__scroll-simplebar"
+          >
             <p class="main-window__text">Press button for load data from API</p>
             <Button @download="showRandomuser" />
             <Card :user="dataCard" />
-            <button class="main-window__btn" @click="addCard">Add new card</button>
+            <button class="main-window__btn" @click="addCard">
+              Add new card
+            </button>
             <p class="main-window__text">
               <span class="__yellow">scrollPositionValue =</span>
               {{ scrollPositionValue }}
@@ -41,6 +78,10 @@
               {{ delta }} >= {{ scrollHeightValue }}
             </p>
           </simplebar>
+
+          <button class="main-window__liquid-btn" @click="showModalForm">
+            <LiquidBtn />
+          </button>
         </div>
         <div class="main-window">
           <h2 class="main-window__title">window for infinity scroll</h2>
@@ -52,7 +93,11 @@
       </main>
 
       <footer class="footer">
-        <a href="https://kaimnotark.github.io/LP_DEAB/" class="footer-link" target="_blank">
+        <a
+          href="https://kaimnotark.github.io/LP_DEAB/"
+          class="footer-link"
+          target="_blank"
+        >
           <span class="__capital">landing page</span>
           (open it on cell phone)
         </a>
@@ -76,13 +121,18 @@ import Card from "./components/Card.vue";
 
 import { Randomuser } from "./Api";
 
+import LiquidBtn from "./components/LiquidBtn.vue";
+import MyReviewForm from "./components/MyReviewForm.vue";
+
 export default {
   name: "app",
 
   components: {
     simplebar,
     Button,
-    Card
+    Card,
+    LiquidBtn,
+    MyReviewForm,
   },
 
   data() {
@@ -130,8 +180,10 @@ export default {
       dataCard: {
         name: "",
         mail: "",
-        imgUrl: ""
-      }
+        imgUrl: "",
+      },
+
+      modalIsOpened: false,
     };
   },
 
@@ -201,7 +253,7 @@ export default {
         initUsers.push({
           name: this.dataCard.name,
           mail: this.dataCard.mail,
-          imgUrl: this.dataCard.imgUrl
+          imgUrl: this.dataCard.imgUrl,
         });
         // console.log("APP -- initRandomusers - initUsers = ") + this.initUsers;
       }
@@ -219,7 +271,7 @@ export default {
       this.initUsers.push({
         name: this.dataCard.name,
         mail: this.dataCard.mail,
-        imgUrl: this.dataCard.imgUrl
+        imgUrl: this.dataCard.imgUrl,
       });
     },
     /**
@@ -245,8 +297,22 @@ export default {
       }
 
       // console.log("APP -- method onScroll run." + this.scrollPosition);
-    }
+    },
+
+    showModalForm() {
+      console.log("APP--showModalForm()-RUN");
+      this.modalOpen();
+    },
+    modalOpen() {
+      console.log(`APP--modalOpen()-${this.modalIsOpened}`);
+      this.modalIsOpened = true;
+    },
+    modalClose() {
+      console.log(`APP--modalClose()-${this.modalIsOpened}`);
+      this.modalIsOpened = false;
+    },
   },
+
   /**
    * Launches the method when the page loads,
    * which generates the initial list of users cards.
@@ -257,7 +323,7 @@ export default {
   created() {
     // console.log("APP -- created initRandomusers.");
     this.initRandomusers(this.initUsers);
-  }
+  },
 };
 </script>
 
@@ -410,6 +476,16 @@ body {
       overflow: auto;
       overflow-x: hidden;
     }
+
+    &__liquid-btn {
+      position: relative;
+      margin: 50px 50px;
+      display: block;
+      border: none;
+      color: none;
+      background-color: $color-white;
+      border-radius: 40px;
+    }
   }
 }
 
@@ -458,4 +534,69 @@ body {
 .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
   background-color: $color-yellow-light;
 }
+
+// begin -- modal overlay form
+.fade-overlay-form-enter-active,
+.fade-overlay-form-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-overlay-form-enter,
+.fade-overlay-form-leave-to {
+  opacity: 0;
+}
+.modal-overlay-form {
+  display: inline;
+  z-index: 900;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 67px;
+  background: rgba(0, 0, 0, 0.5);
+  transition: visibility 200ms ease-in, opacity 200ms ease-in;
+}
+
+.modal__overlay {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-button-close {
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  padding: 0px 5px 1px 6px;
+  margin-top: 12px;
+  margin-right: 10px;
+  background: $color-white;
+  border: 1px solid $color-white;
+  border-radius: 3px;
+  transition: background-color 0.1s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+.modal-button-close:hover {
+  background-color: $color-button-background-gray;
+  border-color: $color-text-black;
+}
+.modal-button-close:focus {
+  outline: none;
+  background-color: $color-button-background-gray;
+  border-color: $color-text-black;
+}
+.modal-button-close:active {
+  background-color: $color-header__dark-gray;
+  border-color: $color-input-focus;
+  color: $color-input-focus;
+}
+.modal-backing {
+  width: 658px;
+  height: calc(100vh - 110px);
+  padding-top: 20px;
+  background-color: $color-white;
+}
+.modal-form__simplebar {
+  width: 658px;
+  height: calc(100vh - 150px);
+}
+// end -- modal overlay form
 </style>
