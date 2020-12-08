@@ -46,10 +46,14 @@
       <div class="form-main__photo-container">
         <LoadPhoto />
         <div class="form-main__photos">
-         <img src="../images/01_boat.png" alt="boat" class="form-main__img">
-         <img src="../images/02_pair.png" alt="pair" class="form-main__img">
-         <img src="../images/03_girl.png" alt="girl" class="form-main__img">
-         <img src="../images/04_wedding.png" alt="wedding" class="form-main__img">
+          <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
+          <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
+          <img src="../images/03_girl.png" alt="girl" class="form-main__img" />
+          <img
+            src="../images/04_wedding.png"
+            alt="wedding"
+            class="form-main__img"
+          />
         </div>
       </div>
 
@@ -102,8 +106,6 @@ export default {
         title: "Пунктуальность",
       },
     ],
-
-   
   }),
 
   methods: {
@@ -117,7 +119,7 @@ export default {
 
 <style lang="scss">
 @import "../stylesheets/variables.scss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 %title {
   font-family: Montserrat;
@@ -239,6 +241,13 @@ input:-webkit-autofill:active {
 
     &__rating-container {
       display: flex;
+      flex-wrap: wrap;
+      width: 440px;
+      height: 136px;
+    }
+
+    &__comment-label {
+      margin-top: 16px;
     }
 
     &__comment-textarea {
