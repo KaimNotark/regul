@@ -140,20 +140,20 @@ select:focus {
 // change text color by placeholder
 ::-webkit-input-placeholder {
   /* Chrome */
-  color: $color-text-light;
+  color: $color-text-placeholder;
 }
 :-ms-input-placeholder {
   /* IE 10+ */
-  color: $color-text-light;
+  color: $color-text-placeholder;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: $color-text-light;
+  color: $color-text-placeholder;
   opacity: 1;
 }
 :-moz-placeholder {
   /* Firefox 4 - 18 */
-  color: $color-text-light;
+  color: $color-text-placeholder;
   opacity: 1;
 }
 
@@ -184,7 +184,7 @@ input:-webkit-autofill:active {
   width: 560px;
   height: 655px;
   background-color: $color-white;
-  padding: 0px 23px 0px 23px;
+  padding: 0px 32px 0px 32px;
   border-radius: 16px;
 
   &-devider {
@@ -194,7 +194,7 @@ input:-webkit-autofill:active {
     color: $color-form-devider;
     background-color: $color-form-devider;
     height: 1px;
-    margin-left: -23px;
+    margin-left: -32px;
   }
 
   &-header {
@@ -219,6 +219,7 @@ input:-webkit-autofill:active {
     &__avatar {
       width: 102px;
       height: 68px;
+      border-radius: 6px;
     }
     &__topic {
       margin-left: 20px;
@@ -247,11 +248,29 @@ input:-webkit-autofill:active {
     }
 
     &__comment-label {
-      margin-top: 16px;
     }
 
     &__comment-textarea {
+      width: 496px;
+      height: 100px;
       resize: none;
+      margin-top: 16px;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px solid #eaecf0;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+    &__characters-value {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+      color: $color-text-placeholder;
+      margin: 0;
     }
   }
   &-footer {
