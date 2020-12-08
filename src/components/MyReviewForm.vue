@@ -1,13 +1,8 @@
 <template>
   <div class="form-container">
-    <form
-      class="form"
-      id="formId"
-      name="form"
-      autocomplete="on"
-      @submit="onSubmit"
-      @reset="onReset"
-    >
+    <form class="form" id="formId" name="form" autocomplete="on">
+      <!-- @submit="onSubmit"
+      @reset="onReset" -->
       <div class="form-header">
         <h2 class="form-header__title">Мой отзыв</h2>
       </div>
@@ -22,6 +17,21 @@
             <p class="form-main__text">{{ user.name }}</p>
           </div>
         </div>
+
+        <label for="" class="form-main__comment-label"></label>
+        <textarea
+          name="comment"
+          id="comment-id"
+          cols="30"
+          rows="10"
+          class="form-main__comment-textarea"
+          autocomplete="off"
+          maxlength="500"
+          placeholder="Комментарий"
+          spellcheck="true"
+          @input="changeComment"
+        ></textarea>
+        <p class="form-main__characters-value">{{ numberOfCharacters }}/500</p>
       </div>
 
       <hr class="form-devider" />
@@ -40,6 +50,18 @@ export default {
     user: {
       type: Object,
       required: true,
+    },
+  },
+
+  data: () => ({
+    textOfComment: "",
+    numberOfCharacters: 0,
+  }),
+
+  methods: {
+    changeComment() {
+      this.textOfComment = document.getElementById("comment-id").value;
+      this.numberOfCharacters = this.textOfComment.length;
     },
   },
 };
@@ -159,6 +181,10 @@ input:-webkit-autofill:active {
       font-size: 12px;
       line-height: 16px;
       color: $color-text-light;
+    }
+
+    &__comment-textarea {
+      resize: none;
     }
   }
   &-footer {
