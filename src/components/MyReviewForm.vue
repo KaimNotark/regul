@@ -18,6 +18,15 @@
           </div>
         </div>
 
+        <div class="form-main__rating-container">
+          <RatingInForm
+            v-for="(rating, index) in ratings"
+            v-model="ratings[index]"
+            :key="rating.id"
+            :rating="rating"
+          />
+        </div>
+
         <label for="" class="form-main__comment-label"></label>
         <textarea
           name="comment"
@@ -43,8 +52,14 @@
   </div>
 </template>
 <script>
+import RatingInForm from "./RatingInForm.vue";
+
 export default {
   name: "MyReviewForm",
+
+  components: {
+    RatingInForm,
+  },
 
   props: {
     user: {
@@ -56,6 +71,25 @@ export default {
   data: () => ({
     textOfComment: "",
     numberOfCharacters: 0,
+
+    ratings: [
+      {
+        id: "0",
+        title: "Скорость",
+      },
+      {
+        id: "1",
+        title: "Скорость отдачи видео",
+      },
+      {
+        id: "2",
+        title: "Качество",
+      },
+      {
+        id: "3",
+        title: "Пунктуальность",
+      },
+    ],
   }),
 
   methods: {
