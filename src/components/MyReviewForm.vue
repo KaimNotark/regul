@@ -169,6 +169,7 @@ export default {
       event.stopPropagation();
 
       this.Validation();
+      alert("Спасибо, отзыв опубликован!");
       // console.log("onSubmit-isValid", this.isValid, this.isFileInInput);
 
       if (this.isValid) {
