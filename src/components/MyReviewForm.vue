@@ -1,8 +1,13 @@
 <template>
   <div class="form-container">
-    <form class="form" id="formId" name="form" autocomplete="on">
-      <!-- @submit="onSubmit"
-      @reset="onReset" -->
+    <form
+      class="form"
+      id="formId"
+      name="form"
+      autocomplete="on"
+      @submit="onSubmit"
+    >
+      <!-- @reset="onReset" -->
       <div class="form-header">
         <h2 class="form-header__title">Мой отзыв</h2>
         <button
@@ -31,6 +36,8 @@
             v-model="ratings[index]"
             :key="rating.id"
             :rating="rating"
+            @raitingNumber="raitingNumber"
+            @raitingIndex="raitingIndex(index)"
           />
         </div>
 
@@ -97,6 +104,14 @@ export default {
     textOfComment: "",
     numberOfCharacters: 0,
 
+    raitingBuffer: 0,
+    ratingSpeed: 0,
+    ratingVideo: 0,
+    ratingQuality: 0,
+    ratingPunctuality: 0,
+
+    isValid: false,
+
     ratings: [
       {
         id: "0",
@@ -126,6 +141,58 @@ export default {
     modalClose() {
       this.$emit("modalClose");
       console.log("bnt close was pressed");
+    },
+
+    Validation() {
+      if (
+        this.textOfComment == 0 ||
+        this.ratingSpeed == 0 ||
+        this.ratingVideo == 0 ||
+        this.ratingQuality == 0 ||
+        this.ratingPunctuality == 0
+      ) {
+        return (this.isValid = false);
+      } else {
+        return (this.isValid = true);
+      }
+    },
+
+    onSubmit(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.Validation();
+      // console.log("onSubmit-isValid", this.isValid);
+
+      if (this.isValid) {
+        const payload = {
+          comment: this.textOfComment,
+          ratingSpeed: this.ratingSpeed,
+          ratingVideo: this.ratingVideo,
+          ratingQuality: this.ratingQuality,
+          ratingPunctuality: this.ratingPunctuality,
+        };
+
+        this.$emit("addFeedback", payload);
+
+        // this.onReset();
+        event.target.reset();
+        this.modalClose();
+      } else {
+        alert("Форма заполнена не полностью. Пожалуйста, заполните все поля.");
+      }
+    },
+
+    raitingNumber(selected) {
+      // console.log("FORM -- raitingNumber - № = " + selected);
+      this.raitingBuffer = selected;
+    },
+
+    raitingIndex(index) {
+      if (index === 0) this.ratingSpeed = this.raitingBuffer;
+      if (index === 1) this.ratingVideo = this.raitingBuffer;
+      if (index === 2) this.ratingQuality = this.raitingBuffer;
+      if (index === 3) this.ratingPunctuality = this.raitingBuffer;
     },
   },
 };
