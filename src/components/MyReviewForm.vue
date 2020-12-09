@@ -58,7 +58,7 @@
       </div>
 
       <div class="form-main__photo-container">
-        <LoadPhoto />
+        <LoadPhoto @isFileInInput="isFileInInput" />
         <div class="form-main__photos">
           <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
           <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
@@ -111,6 +111,7 @@ export default {
     ratingPunctuality: 0,
 
     isValid: false,
+    isFileInInput: false,
 
     ratings: [
       {
@@ -133,6 +134,11 @@ export default {
   }),
 
   methods: {
+    isFileInInput(value) {
+      this.isFileInInput = value;
+      // console.log("Form--isFileInInput()-isFileInInput", this.isFileInInput);
+    },
+
     changeComment() {
       this.textOfComment = document.getElementById("comment-id").value;
       this.numberOfCharacters = this.textOfComment.length;
@@ -140,7 +146,7 @@ export default {
 
     modalClose() {
       this.$emit("modalClose");
-      console.log("bnt close was pressed");
+      // console.log("bnt close was pressed");
     },
 
     Validation() {
@@ -150,6 +156,7 @@ export default {
         this.ratingVideo == 0 ||
         this.ratingQuality == 0 ||
         this.ratingPunctuality == 0
+        // this.isFileInInput == false
       ) {
         return (this.isValid = false);
       } else {
@@ -162,7 +169,7 @@ export default {
       event.stopPropagation();
 
       this.Validation();
-      // console.log("onSubmit-isValid", this.isValid);
+      // console.log("onSubmit-isValid", this.isValid, this.isFileInInput);
 
       if (this.isValid) {
         const payload = {

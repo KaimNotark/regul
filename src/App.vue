@@ -300,20 +300,20 @@ export default {
     },
 
     showModalForm() {
-      console.log("APP--showModalForm()-RUN");
+      // console.log("APP--showModalForm()-RUN");
       this.modalOpen();
     },
     modalOpen() {
-      console.log(`APP--modalOpen()-${this.modalIsOpened}`);
+      // console.log(`APP--modalOpen()-${this.modalIsOpened}`);
       this.modalIsOpened = true;
     },
     modalClose() {
-      console.log(`APP--modalClose()-${this.modalIsOpened}`);
+      // console.log(`APP--modalClose()-${this.modalIsOpened}`);
       this.modalIsOpened = false;
     },
 
     async addFeedback(payload) {
-      console.log("APP--addFeedback-RUN");
+      console.log("APP--addFeedback-RUN", payload);
 
       const options = {
         headers: {
