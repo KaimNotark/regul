@@ -451,4 +451,24 @@ input:-webkit-autofill:active {
     }
   }
 }
+
+@media only screen and (max-width: 360px) {
+  .form {
+    width: 320px;
+    height: 100%;
+
+    &-devider {
+      width: 320px;
+    }
+
+    &-main {
+      &__person {
+        flex-direction: column;
+      }
+
+      &__title {
+      }
+    }
+  }
+}
 </style>
