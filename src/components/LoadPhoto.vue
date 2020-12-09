@@ -40,6 +40,7 @@ export default {
 .load {
   &-photo {
     &__container {
+      margin-right: 8px;
     }
 
     &__label {
@@ -83,6 +84,12 @@ export default {
       position: absolute;
       z-index: -1;
     }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .load-photo__container {
+    margin-top: 8px;
   }
 }
 </style>

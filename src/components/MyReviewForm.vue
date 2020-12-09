@@ -59,16 +59,16 @@
 
       <div class="form-main__photo-container">
         <LoadPhoto @isFileInInput="isFileInInput" />
-        <div class="form-main__photos">
-          <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
-          <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
-          <img src="../images/03_girl.png" alt="girl" class="form-main__img" />
-          <img
-            src="../images/04_wedding.png"
-            alt="wedding"
-            class="form-main__img"
-          />
-        </div>
+        <!-- <div class="form-main__photos"> -->
+        <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
+        <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
+        <img src="../images/03_girl.png" alt="girl" class="form-main__img" />
+        <img
+          src="../images/04_wedding.png"
+          alt="wedding"
+          class="form-main__img"
+        />
+        <!-- </div> -->
       </div>
 
       <hr class="form-devider" />
@@ -395,18 +395,19 @@ input:-webkit-autofill:active {
     &__photo-container {
       display: flex;
       flex-wrap: wrap;
+      justify-content: flex-start;
       margin-top: 16px;
       height: 85px;
     }
 
-    &__photos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-    }
+    // &__photos {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: flex-start;
+    // }
 
     &__img {
-      margin-left: 8px;
+      margin-right: 8px;
       width: 80px;
       height: 80px;
     }
@@ -455,7 +456,7 @@ input:-webkit-autofill:active {
 @media only screen and (max-width: 360px) {
   .form {
     width: 320px;
-    height: 100%;
+    height: 1010px;
 
     &-devider {
       width: 320px;
@@ -468,6 +469,31 @@ input:-webkit-autofill:active {
 
       &__title {
       }
+
+      &__topic {
+        margin-left: 0px;
+      }
+
+      &__rating-container {
+        flex-direction: column;
+      }
+
+      &__comment-textarea {
+        width: 288px;
+      }
+
+      &__photo-container {
+        height: 168px;
+        width: 280px;
+      }
+
+      &__img {
+        margin-top: 8px;
+      }
+    }
+
+    &-footer {
+      width: 270px;
     }
   }
 }
