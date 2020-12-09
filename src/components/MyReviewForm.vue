@@ -156,7 +156,7 @@ export default {
         this.ratingVideo == 0 ||
         this.ratingQuality == 0 ||
         this.ratingPunctuality == 0
-        // this.isFileInInput == false
+        // !this.isFileInInput
       ) {
         return (this.isValid = false);
       } else {
@@ -169,8 +169,7 @@ export default {
       event.stopPropagation();
 
       this.Validation();
-      alert("Спасибо, отзыв опубликован!");
-      // console.log("onSubmit-isValid", this.isValid, this.isFileInInput);
+      console.log("onSubmit-isValid", this.isValid, this.isFileInInput);
 
       if (this.isValid) {
         const payload = {
@@ -186,6 +185,7 @@ export default {
         // this.onReset();
         event.target.reset();
         this.modalClose();
+        alert("Спасибо, отзыв опубликован!");
       } else {
         alert("Форма заполнена не полностью. Пожалуйста, заполните все поля.");
       }
