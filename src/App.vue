@@ -9,19 +9,16 @@
           v-if="modalIsOpened"
         >
           <div modal-overlay-close="modal-overlay" class="modal__overlay">
-            <button
-              class="modal-button-close"
-              type="button"
-              @click="modalClose"
-            >
-              ×
-            </button>
             <div class="modal-backing">
               <!-- <simplebar
                 data-simplebar-auto-hide="false"
                 class="modal-form__simplebar"
               > -->
-              <MyReviewForm :user="dataCard" />
+              <MyReviewForm
+                @modalClose="modalClose"
+                @addFeedback="addFeedback"
+                :user="dataCard"
+              />
               <!-- </simplebar> -->
             </div>
           </div>
@@ -124,6 +121,8 @@ import { Randomuser } from "./Api";
 import LiquidBtn from "./components/LiquidBtn.vue";
 import MyReviewForm from "./components/MyReviewForm.vue";
 
+import axios from "axios";
+
 export default {
   name: "app",
 
@@ -184,6 +183,7 @@ export default {
       },
 
       modalIsOpened: false,
+      baseUrl: "#",
     };
   },
 
@@ -300,16 +300,37 @@ export default {
     },
 
     showModalForm() {
-      console.log("APP--showModalForm()-RUN");
+      // console.log("APP--showModalForm()-RUN");
       this.modalOpen();
     },
     modalOpen() {
-      console.log(`APP--modalOpen()-${this.modalIsOpened}`);
+      // console.log(`APP--modalOpen()-${this.modalIsOpened}`);
       this.modalIsOpened = true;
     },
     modalClose() {
-      console.log(`APP--modalClose()-${this.modalIsOpened}`);
+      // console.log(`APP--modalClose()-${this.modalIsOpened}`);
       this.modalIsOpened = false;
+    },
+
+    async addFeedback(payload) {
+      console.log("APP--addFeedback-RUN", payload);
+
+      const options = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      try {
+        const { data } = await axios.post(this.baseUrl, payload, options);
+
+        console.log("addFeedback:", data);
+
+        return data;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
     },
   },
 

@@ -18,6 +18,18 @@
 <script>
 export default {
   name: "LoadPhoto",
+
+  data: () => ({
+    isFileInInput: false,
+  }),
+
+  methods: {
+    addFile(files) {
+      this.isFileInInput = files.length > 0;
+      // console.log("LoadPhoto--addFile-isFileInInput", this.isFileInInput);
+      this.$emit("isFileInInput", this.isFileInInput);
+    },
+  },
 };
 </script>
 

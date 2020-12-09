@@ -1,10 +1,22 @@
 <template>
   <div class="form-container">
-    <form class="form" id="formId" name="form" autocomplete="on">
-      <!-- @submit="onSubmit"
-      @reset="onReset" -->
+    <form
+      class="form"
+      id="formId"
+      name="form"
+      autocomplete="on"
+      @submit="onSubmit"
+    >
+      <!-- @reset="onReset" -->
       <div class="form-header">
         <h2 class="form-header__title">Мой отзыв</h2>
+        <button
+          type="button"
+          @click="modalClose"
+          class="form-header__close-btn"
+        >
+          ×
+        </button>
       </div>
 
       <hr class="form-devider" />
@@ -24,6 +36,8 @@
             v-model="ratings[index]"
             :key="rating.id"
             :rating="rating"
+            @raitingNumber="raitingNumber"
+            @raitingIndex="raitingIndex(index)"
           />
         </div>
 
@@ -44,7 +58,7 @@
       </div>
 
       <div class="form-main__photo-container">
-        <LoadPhoto />
+        <LoadPhoto @isFileInInput="isFileInInput" />
         <div class="form-main__photos">
           <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
           <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
@@ -90,6 +104,15 @@ export default {
     textOfComment: "",
     numberOfCharacters: 0,
 
+    raitingBuffer: 0,
+    ratingSpeed: 0,
+    ratingVideo: 0,
+    ratingQuality: 0,
+    ratingPunctuality: 0,
+
+    isValid: false,
+    isFileInInput: false,
+
     ratings: [
       {
         id: "0",
@@ -111,9 +134,72 @@ export default {
   }),
 
   methods: {
+    isFileInInput(value) {
+      this.isFileInInput = value;
+      // console.log("Form--isFileInInput()-isFileInInput", this.isFileInInput);
+    },
+
     changeComment() {
       this.textOfComment = document.getElementById("comment-id").value;
       this.numberOfCharacters = this.textOfComment.length;
+    },
+
+    modalClose() {
+      this.$emit("modalClose");
+      // console.log("bnt close was pressed");
+    },
+
+    Validation() {
+      if (
+        this.textOfComment == 0 ||
+        this.ratingSpeed == 0 ||
+        this.ratingVideo == 0 ||
+        this.ratingQuality == 0 ||
+        this.ratingPunctuality == 0
+        // this.isFileInInput == false
+      ) {
+        return (this.isValid = false);
+      } else {
+        return (this.isValid = true);
+      }
+    },
+
+    onSubmit(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.Validation();
+      // console.log("onSubmit-isValid", this.isValid, this.isFileInInput);
+
+      if (this.isValid) {
+        const payload = {
+          comment: this.textOfComment,
+          ratingSpeed: this.ratingSpeed,
+          ratingVideo: this.ratingVideo,
+          ratingQuality: this.ratingQuality,
+          ratingPunctuality: this.ratingPunctuality,
+        };
+
+        this.$emit("addFeedback", payload);
+
+        // this.onReset();
+        event.target.reset();
+        this.modalClose();
+      } else {
+        alert("Форма заполнена не полностью. Пожалуйста, заполните все поля.");
+      }
+    },
+
+    raitingNumber(selected) {
+      // console.log("FORM -- raitingNumber - № = " + selected);
+      this.raitingBuffer = selected;
+    },
+
+    raitingIndex(index) {
+      if (index === 0) this.ratingSpeed = this.raitingBuffer;
+      if (index === 1) this.ratingVideo = this.raitingBuffer;
+      if (index === 2) this.ratingQuality = this.raitingBuffer;
+      if (index === 3) this.ratingPunctuality = this.raitingBuffer;
     },
   },
 };
@@ -200,6 +286,9 @@ input:-webkit-autofill:active {
   }
 
   &-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     height: 20px;
     left: 0px;
@@ -211,6 +300,28 @@ input:-webkit-autofill:active {
       left: 32px;
       top: 16px;
       @extend %title;
+    }
+
+    &__close-btn {
+      display: block;
+      color: $color-text-placeholder;
+      font-size: 30px;
+      padding: 0px 0px 0px 0px;
+      margin-top: -5px;
+      // margin-right: 10px;
+      background: $color-white;
+      border: none;
+      transition: background-color 0.1s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+    &__close-btn:hover {
+      color: $color-text-main;
+    }
+    &__close-btn:focus {
+      outline: none;
+    }
+    &__close-btn:active {
+      color: $color-button-background-blue;
     }
   }
   &-main {
