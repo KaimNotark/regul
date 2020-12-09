@@ -9,13 +9,14 @@ yarn add vue-star-rating
   <div class="form__rating-container">
     <p class="form__rating-title">{{ rating.title }}</p>
     <star-rating
-      :star-size="13"
+      :star-size="21"
       :show-rating="false"
-      inactive-color="#ffffff"
+      inactive-color="#EAECF0"
       :active-color="colorStar"
-      :border-color="colorStar"
-      :border-width="2"
-      :padding="0"
+      border-color="#EAECF0"
+      :rounded-corners="true"
+      :border-width="0"
+      :padding="10"
       :rating="ratingValue"
       @rating-selected="setRating"
     ></star-rating>
@@ -115,18 +116,22 @@ export default {
 
 <style lang="scss" scoped>
 @import "../stylesheets/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .form__rating-container {
   display: flex;
   flex-direction: column;
+  width: 220px;
+  height: 60px;
 }
 
 .form__rating-title {
   color: $color-text-main;
-  margin-bottom: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 12px;
-  text-transform: uppercase;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  // text-transform: uppercase;
 }
 </style>

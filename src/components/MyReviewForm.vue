@@ -46,17 +46,23 @@
       <div class="form-main__photo-container">
         <LoadPhoto />
         <div class="form-main__photos">
-         <img src="../images/01_boat.png" alt="boat" class="form-main__img">
-         <img src="../images/02_pair.png" alt="pair" class="form-main__img">
-         <img src="../images/03_girl.png" alt="girl" class="form-main__img">
-         <img src="../images/04_wedding.png" alt="wedding" class="form-main__img">
+          <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
+          <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
+          <img src="../images/03_girl.png" alt="girl" class="form-main__img" />
+          <img
+            src="../images/04_wedding.png"
+            alt="wedding"
+            class="form-main__img"
+          />
         </div>
       </div>
 
       <hr class="form-devider" />
 
       <div class="form-footer">
-        <button type="submit" class="form-footer__button">Отправить</button>
+        <button type="submit" class="form-footer__submit-button">
+          Отправить
+        </button>
       </div>
     </form>
   </div>
@@ -102,8 +108,6 @@ export default {
         title: "Пунктуальность",
       },
     ],
-
-   
   }),
 
   methods: {
@@ -117,7 +121,7 @@ export default {
 
 <style lang="scss">
 @import "../stylesheets/variables.scss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 %title {
   font-family: Montserrat;
@@ -138,20 +142,20 @@ select:focus {
 // change text color by placeholder
 ::-webkit-input-placeholder {
   /* Chrome */
-  color: $color-text-light;
+  color: $color-text-placeholder;
 }
 :-ms-input-placeholder {
   /* IE 10+ */
-  color: $color-text-light;
+  color: $color-text-placeholder;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: $color-text-light;
+  color: $color-text-placeholder;
   opacity: 1;
 }
 :-moz-placeholder {
   /* Firefox 4 - 18 */
-  color: $color-text-light;
+  color: $color-text-placeholder;
   opacity: 1;
 }
 
@@ -182,7 +186,7 @@ input:-webkit-autofill:active {
   width: 560px;
   height: 655px;
   background-color: $color-white;
-  padding: 0px 23px 0px 23px;
+  padding: 0px 32px 0px 32px;
   border-radius: 16px;
 
   &-devider {
@@ -192,7 +196,7 @@ input:-webkit-autofill:active {
     color: $color-form-devider;
     background-color: $color-form-devider;
     height: 1px;
-    margin-left: -23px;
+    margin-left: -32px;
   }
 
   &-header {
@@ -217,6 +221,7 @@ input:-webkit-autofill:active {
     &__avatar {
       width: 102px;
       height: 68px;
+      border-radius: 6px;
     }
     &__topic {
       margin-left: 20px;
@@ -239,25 +244,90 @@ input:-webkit-autofill:active {
 
     &__rating-container {
       display: flex;
+      flex-wrap: wrap;
+      width: 440px;
+      height: 136px;
+    }
+
+    &__comment-label {
     }
 
     &__comment-textarea {
+      width: 496px;
+      height: 100px;
       resize: none;
+      margin-top: 16px;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px solid #eaecf0;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+    &__characters-value {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+      color: $color-text-placeholder;
+      margin: 0;
+    }
+
+    &__photo-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    &__photos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &__img {
+      margin-left: 8px;
     }
   }
   &-footer {
-    width: 560px;
+    display: flex;
+    justify-content: flex-end;
+    width: 496px;
     height: 68px;
     left: 0px;
     top: 588px;
     border-radius: 0px 0px 16px 16px;
-    &__button {
+
+    &__submit-button {
       width: 105px;
       height: 36px;
-      right: 0px;
-      top: 0px;
+      margin: 16px 0 16px 0;
+      border: solid 1px $color-button-background-blue;
       background: $color-button-background-blue;
       border-radius: 6px;
+      color: #ffffff;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      transition: background-color 0.1s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+    &__submit-button:hover {
+      border-color: #3c8e96;
+      background-color: #3c8e96;
+    }
+    &__submit-button:focus {
+      outline: none;
+      border: 1px solid #3c8e96;
+    }
+    &__submit-button:active {
+      border: 2px solid #53c6d1;
+      background-color: #ffffff;
+      color: #53c6d1;
     }
   }
 }
