@@ -271,13 +271,13 @@ input:-webkit-autofill:active {
 
 .form {
   width: 560px;
-  height: 655px;
+  height: 639px;
   background-color: $color-white;
   padding: 0px 32px 0px 32px;
   border-radius: 16px;
 
   &-devider {
-    margin-top: 17px;
+    margin-top: 19px;
     width: 560px;
     border: none;
     color: $color-form-devider;
@@ -300,6 +300,7 @@ input:-webkit-autofill:active {
     &__title {
       left: 32px;
       top: 16px;
+      letter-spacing: 0.3px;
       @extend %title;
     }
 
@@ -309,6 +310,7 @@ input:-webkit-autofill:active {
       font-size: 30px;
       padding: 0px 0px 0px 0px;
       margin-top: -5px;
+      margin-right: -12px;
       // margin-right: 10px;
       background: $color-white;
       border: none;
@@ -337,15 +339,16 @@ input:-webkit-autofill:active {
     }
     &__topic {
       margin-left: 20px;
+      padding-top: 13px;
     }
     &__title {
       @extend %title;
+      letter-spacing: 0.3px;
     }
     &__text {
       width: 374px;
       height: 16px;
-      left: 0px;
-      top: 28px;
+      margin-top: 3px;
       font-family: Montserrat;
       font-style: normal;
       font-weight: normal;
@@ -358,7 +361,8 @@ input:-webkit-autofill:active {
       display: flex;
       flex-wrap: wrap;
       width: 440px;
-      height: 136px;
+      // height: 136px;
+      margin-top: 18px;
     }
 
     &__comment-label {
@@ -368,12 +372,13 @@ input:-webkit-autofill:active {
       width: 496px;
       height: 100px;
       resize: none;
-      margin-top: 16px;
-      padding: 12px;
+      margin-top: 22px;
+      padding: 15px 15px 15px 12px;
       background: #fafafa;
       border: 1px solid #eaecf0;
       box-sizing: border-box;
       border-radius: 6px;
+      letter-spacing: 0.9px;
     }
 
     &__characters-value {
@@ -391,6 +396,7 @@ input:-webkit-autofill:active {
       display: flex;
       flex-wrap: wrap;
       margin-top: 16px;
+      height: 85px;
     }
 
     &__photos {
@@ -401,6 +407,8 @@ input:-webkit-autofill:active {
 
     &__img {
       margin-left: 8px;
+      width: 80px;
+      height: 80px;
     }
   }
   &-footer {
@@ -415,7 +423,7 @@ input:-webkit-autofill:active {
     &__submit-button {
       width: 105px;
       height: 36px;
-      margin: 16px 0 16px 0;
+      margin: 7px -16px 16px 0px;
       border: solid 1px $color-button-background-blue;
       background: $color-button-background-blue;
       border-radius: 6px;

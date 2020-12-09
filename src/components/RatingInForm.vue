@@ -16,7 +16,7 @@ yarn add vue-star-rating
       border-color="#EAECF0"
       :rounded-corners="true"
       :border-width="0"
-      :padding="10"
+      :padding="14"
       :rating="ratingValue"
       @rating-selected="setRating"
     ></star-rating>
@@ -122,7 +122,8 @@ export default {
   display: flex;
   flex-direction: column;
   width: 220px;
-  height: 60px;
+  height: 80px;
+  // margin-top: 5px;
 }
 
 .form__rating-title {
