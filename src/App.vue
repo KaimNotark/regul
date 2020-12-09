@@ -9,19 +9,19 @@
           v-if="modalIsOpened"
         >
           <div modal-overlay-close="modal-overlay" class="modal__overlay">
-            <button
+            <!-- <button
               class="modal-button-close"
               type="button"
               @click="modalClose"
             >
               ×
-            </button>
+            </button> -->
             <div class="modal-backing">
               <!-- <simplebar
                 data-simplebar-auto-hide="false"
                 class="modal-form__simplebar"
               > -->
-              <MyReviewForm :user="dataCard" />
+              <MyReviewForm @modalClose="modalClose" :user="dataCard" />
               <!-- </simplebar> -->
             </div>
           </div>

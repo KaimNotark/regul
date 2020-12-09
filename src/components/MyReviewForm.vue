@@ -5,6 +5,13 @@
       @reset="onReset" -->
       <div class="form-header">
         <h2 class="form-header__title">Мой отзыв</h2>
+        <button
+          type="button"
+          @click="modalClose"
+          class="form-header__close-btn"
+        >
+          ×
+        </button>
       </div>
 
       <hr class="form-devider" />
@@ -115,6 +122,11 @@ export default {
       this.textOfComment = document.getElementById("comment-id").value;
       this.numberOfCharacters = this.textOfComment.length;
     },
+
+    modalClose() {
+      this.$emit("modalClose");
+      console.log("bnt close was pressed");
+    },
   },
 };
 </script>
@@ -200,6 +212,9 @@ input:-webkit-autofill:active {
   }
 
   &-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     height: 20px;
     left: 0px;
@@ -211,6 +226,28 @@ input:-webkit-autofill:active {
       left: 32px;
       top: 16px;
       @extend %title;
+    }
+
+    &__close-btn {
+      display: block;
+      color: $color-text-placeholder;
+      font-size: 30px;
+      padding: 0px 0px 0px 0px;
+      margin-top: -5px;
+      // margin-right: 10px;
+      background: $color-white;
+      border: none;
+      transition: background-color 0.1s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+    &__close-btn:hover {
+      color: $color-text-main;
+    }
+    &__close-btn:focus {
+      outline: none;
+    }
+    &__close-btn:active {
+      color: $color-button-background-blue;
     }
   }
   &-main {
