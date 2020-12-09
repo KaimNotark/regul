@@ -10,16 +10,16 @@
         >
           <div modal-overlay-close="modal-overlay" class="modal__overlay">
             <div class="modal-backing">
-              <!-- <simplebar
-                data-simplebar-auto-hide="false"
+              <simplebar
+                data-simplebar-auto-hide="true"
                 class="modal-form__simplebar"
-              > -->
-              <MyReviewForm
-                @modalClose="modalClose"
-                @addFeedback="addFeedback"
-                :user="dataCard"
-              />
-              <!-- </simplebar> -->
+              >
+                <MyReviewForm
+                  @modalClose="modalClose"
+                  @addFeedback="addFeedback"
+                  :user="dataCard"
+                />
+              </simplebar>
             </div>
           </div>
         </div>
@@ -617,8 +617,26 @@ body {
   border-radius: 16px;
 }
 .modal-form__simplebar {
-  width: 590px;
-  height: 655px;
+  width: 560px;
+  height: 665px;
 }
 // end -- modal overlay form
+
+@media only screen and (max-width: 360px) {
+  .modal-overlay-form {
+    width: 360px;
+    height: 100%;
+    padding: 5px;
+  }
+
+  .modal-backing {
+    width: 360px;
+    height: 100%;
+  }
+
+  .modal-form__simplebar {
+    width: 320px;
+    height: 665px;
+  }
+}
 </style>
