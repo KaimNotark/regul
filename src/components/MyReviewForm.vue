@@ -60,7 +60,9 @@
       <hr class="form-devider" />
 
       <div class="form-footer">
-        <button type="submit" class="form-footer__button">Отправить</button>
+        <button type="submit" class="form-footer__submit-button">
+          Отправить
+        </button>
       </div>
     </form>
   </div>
@@ -274,6 +276,9 @@ input:-webkit-autofill:active {
     }
 
     &__photo-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
     }
 
     &__photos {
@@ -287,18 +292,42 @@ input:-webkit-autofill:active {
     }
   }
   &-footer {
-    width: 560px;
+    display: flex;
+    justify-content: flex-end;
+    width: 496px;
     height: 68px;
     left: 0px;
     top: 588px;
     border-radius: 0px 0px 16px 16px;
-    &__button {
+
+    &__submit-button {
       width: 105px;
       height: 36px;
-      right: 0px;
-      top: 0px;
+      margin: 16px 0 16px 0;
+      border: solid 1px $color-button-background-blue;
       background: $color-button-background-blue;
       border-radius: 6px;
+      color: #ffffff;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      transition: background-color 0.1s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+    &__submit-button:hover {
+      border-color: #3c8e96;
+      background-color: #3c8e96;
+    }
+    &__submit-button:focus {
+      outline: none;
+      border: 1px solid #3c8e96;
+    }
+    &__submit-button:active {
+      border: 2px solid #53c6d1;
+      background-color: #ffffff;
+      color: #53c6d1;
     }
   }
 }
