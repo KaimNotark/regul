@@ -68,6 +68,7 @@
           alt="wedding"
           class="form-main__img"
         />
+        <DellButton class="form-main__dell-button" />
         <!-- </div> -->
       </div>
 
@@ -84,6 +85,7 @@
 <script>
 import RatingInForm from "./RatingInForm.vue";
 import LoadPhoto from "./LoadPhoto.vue";
+import DellButton from "./DellButton.vue";
 
 export default {
   name: "MyReviewForm",
@@ -91,6 +93,7 @@ export default {
   components: {
     RatingInForm,
     LoadPhoto,
+    DellButton,
   },
 
   props: {
@@ -410,6 +413,11 @@ input:-webkit-autofill:active {
       margin-right: 8px;
       width: 80px;
       height: 80px;
+    }
+
+    &__dell-button {
+      margin-left: -48px;
+      margin-top: 8px;
     }
   }
   &-footer {
