@@ -23,7 +23,7 @@
       </g>
     </svg>
 
-    <svg class="dell-btn-icon dell-btn-icon__hover">
+    <svg class="dell-btn-icon dell-btn-icon__hover" @click="dellImage">
       <use xlink:href="#icon-home_w_svg" />
     </svg>
   </div>
@@ -32,6 +32,13 @@
 <script>
 export default {
   name: "DellButton",
+
+  methods: {
+    dellImage() {
+      console.log("dell image");
+      confirm("Вы действительно желаете удалить фотографию?");
+    },
+  },
 };
 </script>
 
