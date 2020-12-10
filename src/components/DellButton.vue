@@ -1,22 +1,5 @@
 <template>
   <div class="dell-btn__container">
-    <!-- <svg
-      aria-hidden="true"
-      style="position: absolute; width: 0; height: 0; overflow: hidden;"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
-      <defs>
-        <symbol id="icon-home_w_svg" viewBox="-20 -18 76 76">
-          <title>Домашняя страница</title>
-          <path
-            d="M36 18l-6-6.461v-7.539h-4v4.192l-8-8.192-18 18v2h4v12h10v-10h8v10h10v-12h4v-2z"
-          />
-        </symbol>
-      </defs>
-    </svg> -->
-
     <svg
       aria-hidden="true"
       style="position: absolute; width: 0; height: 0; overflow: hidden;"
@@ -25,7 +8,7 @@
       xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <g>
-        <symbol id="icon-home_w_svg" viewBox="0 0 1500 1500">
+        <symbol id="icon-home_w_svg" viewBox="-250 -250 1500 1500">
           <title>Домашняя страница</title>
           <path
             d="M799.4,936.9H200.1c-36.1,0-65.4-27.4-65.4-61.1V345.5c0-33.7,29.3-61.1,65.4-61.1h599.3c36.1,0,65.4,27.4,65.4,61.1v530.3C864.8,909.5,835.4,936.9,799.4,936.9z M200.1,340.3c-5.9,0-9.5,3.4-9.5,5.2v530.3c0,1.8,3.6,5.2,9.5,5.2h599.3c5.9,0,9.5-3.4,9.5-5.2V345.5c0-1.8-3.6-5.2-9.5-5.2H200.1z"
@@ -57,8 +40,11 @@ export default {
 
 .dell-btn-icon {
   display: inline-block;
-  width: 50px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
@@ -68,26 +54,26 @@ export default {
     color: $color-white;
     transition: color 0.3s ease, border-color 0.3s ease,
       background-color 0.2s ease;
-    border: 1px solid $color-nav__gray;
-    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
     cursor: pointer;
   }
 
   &__hover:hover {
-    color: $color-nav__button-blue;
-    border-color: $color-nav__button-blue;
-    background-color: $color-nav__button-dark-gray;
+    color: $color-button-background-blue;
+    border-color: $color-button-background-blue;
+    background-color: rgba(0, 0, 0, 0.8);
   }
   &__hover:focus {
     outline: none;
-    color: $color-nav__button-blue;
-    border-color: $color-nav__button-dark-blue;
-    background-color: $color-nav__button-dark-gray;
+    color: $color-button-background-blue;
+    border-color: $color-button-background-blue;
+    background-color: #000000;
   }
   &__hover:active {
     color: $color-nav__button-dark-blue;
     border-color: $color-nav__button-dark-blue;
-    background-color: $color-nav__button-dark-gray;
+    background-color: #000000;
   }
 }
 </style>

@@ -68,7 +68,7 @@
           alt="wedding"
           class="form-main__img"
         />
-        <DellButton />
+        <DellButton class="form-main__dell-button" />
         <!-- </div> -->
       </div>
 
@@ -413,6 +413,11 @@ input:-webkit-autofill:active {
       margin-right: 8px;
       width: 80px;
       height: 80px;
+    }
+
+    &__dell-button {
+      margin-left: -48px;
+      margin-top: 8px;
     }
   }
   &-footer {
