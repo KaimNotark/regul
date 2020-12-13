@@ -57,20 +57,28 @@
         <p class="form-main__characters-value">{{ numberOfCharacters }}/500</p>
       </div>
 
-      <div class="form-main__photo-container">
-        <LoadPhoto @isFileInInput="isFileInInput" />
-        <!-- <div class="form-main__photos"> -->
-        <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
-        <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
-        <img src="../images/03_girl.png" alt="girl" class="form-main__img" />
-        <img
-          src="../images/04_wedding.png"
-          alt="wedding"
-          class="form-main__img"
-        />
-        <DellButton class="form-main__dell-button" />
-        <!-- </div> -->
-      </div>
+      <ul class="form-main__photo-list">
+        <li class="form-main__photo-item">
+          <LoadPhoto @isFileInInput="isFileInInput" />
+        </li>
+        <li class="form-main__photo-item">
+          <img src="../images/01_boat.png" alt="boat" class="form-main__img" />
+        </li>
+        <li class="form-main__photo-item">
+          <img src="../images/02_pair.png" alt="pair" class="form-main__img" />
+        </li>
+        <li class="form-main__photo-item">
+          <img src="../images/03_girl.png" alt="girl" class="form-main__img" />
+        </li>
+        <li class="form-main__photo-item">
+          <img
+            src="../images/04_wedding.png"
+            alt="wedding"
+            class="form-main__img"
+          />
+          <DellButton class="form-main__dell-button" />
+        </li>
+      </ul>
 
       <hr class="form-devider" />
 
@@ -395,7 +403,7 @@ input:-webkit-autofill:active {
       margin: 0;
     }
 
-    &__photo-container {
+    &__photo-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
@@ -403,11 +411,8 @@ input:-webkit-autofill:active {
       height: 85px;
     }
 
-    // &__photos {
-    //   display: flex;
-    //   flex-wrap: wrap;
-    //   justify-content: flex-start;
-    // }
+    &__photo-item {
+    }
 
     &__img {
       margin-right: 8px;
