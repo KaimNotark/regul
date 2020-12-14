@@ -76,8 +76,8 @@
             alt="wedding"
             class="form-main__img"
           />
-          <DellButton class="form-main__dell-button" />
         </li>
+        <DellButton class="form-main__dell-button" />
       </ul>
 
       <hr class="form-devider" />
@@ -412,10 +412,12 @@ input:-webkit-autofill:active {
     }
 
     &__photo-item {
+      margin-right: 8px;
+      width: 80px;
+      height: 80px;
     }
 
     &__img {
-      margin-right: 8px;
       width: 80px;
       height: 80px;
     }
@@ -495,13 +497,18 @@ input:-webkit-autofill:active {
         width: 288px;
       }
 
-      &__photo-container {
+      &__photo-list {
         height: 168px;
         width: 280px;
       }
 
       &__img {
         margin-top: 8px;
+      }
+
+      &__dell-button {
+        margin-left: -48px;
+        margin-top: 16px;
       }
     }
 

@@ -553,7 +553,8 @@ body {
 }
 
 .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
-  background-color: $color-yellow-light;
+  background-color: #ffffff;
+  opacity: 0;
 }
 
 // begin -- modal overlay form
